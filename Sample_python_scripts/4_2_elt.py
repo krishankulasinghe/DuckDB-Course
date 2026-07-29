@@ -1,3 +1,8 @@
+# 4_2_elt.py
+# Local ELT pipeline: loads the 311 elevator CSV into a local DuckDB database,
+# lowercases complaint types, normalizes column names, and derives a
+# closed_in_days column, storing the cleaned result in the clean_requests table.
+
 import duckdb
 import re
 

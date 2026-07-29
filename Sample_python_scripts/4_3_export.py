@@ -1,3 +1,7 @@
+# 4_3_export.py
+# Exports the cleaned clean_requests table from the local DuckDB database to both
+# CSV and Parquet files, then reads the Parquet back to show the top complaint types.
+
 import duckdb
 from pathlib import Path
 

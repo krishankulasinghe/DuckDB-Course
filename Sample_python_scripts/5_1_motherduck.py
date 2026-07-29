@@ -1,3 +1,7 @@
+# 5_1_motherduck.py
+# Connects to MotherDuck's shared sample_data database using a token from .env and
+# runs a yearly complaint count against the cloud NYC service_requests table.
+
 import duckdb
 import os
 # do "pip install dotenv" first

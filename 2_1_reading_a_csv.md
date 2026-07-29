@@ -31,6 +31,41 @@ LIMIT 5;
 
 ---
 
+## 2_1. Reading Parquet Files
+
+DuckDB isn't limited to CSVs—it can query **Parquet files** directly too, without importing them first. Parquet is a compressed, columnar format that is typically much faster to scan than CSV.
+
+```sql
+-- Read a Parquet file directly
+SELECT * 
+FROM read_parquet('311_Elevator_Service_Requests_.parquet')
+LIMIT 5;
+```
+
+```sql
+-- DuckDB can also infer the format from the extension
+SELECT COUNT(*) 
+FROM '311_Elevator_Service_Requests_.parquet';
+```
+
+You can even read **multiple Parquet files at once** using a glob pattern:
+
+```sql
+SELECT *
+FROM read_parquet('data/*.parquet');
+```
+
+To convert the CSV into Parquet for faster future queries:
+
+```sql
+COPY (SELECT * FROM read_csv_auto('311_Elevator_Service_Requests_.csv'))
+TO '311_Elevator_Service_Requests_.parquet' (FORMAT parquet);
+```
+
+_Every query below that uses `read_csv_auto(...)` can be swapped for `read_parquet(...)` once you have a Parquet version of the data._
+
+---
+
 ## 3. Time Breakdown of Elevator Complaints (Monthly)
 
 ```sql

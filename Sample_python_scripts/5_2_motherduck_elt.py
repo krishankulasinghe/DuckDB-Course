@@ -1,3 +1,7 @@
+# 5_2_motherduck_elt.py
+# Cloud ELT pipeline: runs the same load/clean/transform steps as 4_2_elt.py but
+# against a MotherDuck cloud database (course_demo), producing the clean_requests table.
+
 import duckdb
 import os
 import re

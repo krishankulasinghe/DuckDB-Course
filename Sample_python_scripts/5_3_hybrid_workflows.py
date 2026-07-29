@@ -1,3 +1,8 @@
+# 5_3_hybrid_workflows.py
+# Hybrid local + cloud workflow: uses the local DuckDB database to find the densest
+# Manhattan elevator-complaint hotspot and render a heat map, then queries MotherDuck
+# in the cloud for yearly complaint counts within a radius of that HQ location.
+
 import os
 import math
 import numpy as np

@@ -1,5 +1,21 @@
 # Section 6: Setting Up Duck Lake with S3 and MotherDuck
 
+## What is DuckLake?
+
+DuckLake is a brand-new integrated lakehouse format from DuckDB. It combines the benefits of a data lake with the features of a traditional database:
+
+- **Open storage format:** It stores your data as **Parquet files**, typically in object stores like S3. Because Parquet is an open standard, you can read the same data with other tools.
+- **Simple ingestion:** Bringing in new data is easy—with basically one line of SQL you can add new Parquet files directly into your DuckLake tables.
+- **Managed metadata (data catalog):** DuckLake tracks which files belong to a table, how the schema changes over time, and maintains **snapshots**. Snapshots let you roll back to a previous state or see exactly how a table looked at a given point in time.
+- **Full transactions:** It supports **commit and rollback**. If an insert or update fails, your table stays consistent and is never left half-broken.
+- **Local or cloud:** You can run DuckLake **locally** with DuckDB (via the DuckLake extension) or directly inside **MotherDuck**. With MotherDuck, metadata, transactions, and coordination are fully managed and cloud-native—no extra infrastructure required.
+- **Multi-client writes:** If you run DuckLake locally and want multiple clients writing to the same S3 data, you can point the catalog at an external database like **PostgreSQL** so everyone shares the same metadata and coordinated writes.
+- **Simpler than the alternatives:** Compared to formats like Apache Iceberg or Delta Lake, DuckLake takes a simpler path—fewer moving parts, fast to set up, and a natural fit for MotherDuck and DuckDB users.
+
+In short, DuckLake is the lakehouse for your DuckDB and MotherDuck setup. Let's set it up.
+
+---
+
 ## Step 1. Create an S3 Bucket
 1. In the AWS console, search for **S3** and open the service.  
 2. Click **Create bucket**.  
